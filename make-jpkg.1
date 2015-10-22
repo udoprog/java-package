@@ -57,6 +57,10 @@ Replace the JVMs keystore with a softlink to the system's keystore,
 (/etc/ssl/certs/java/cacerts) which is managed automatically by the
 ca-certificates and ca-certificates-java packages.
 .TP
+.B --without-alternatives
+Build a package that does not install alternatives.
+This will remove the postinst hooks that install update-alternative symlinks.
+.TP
 .B --help
 display help text and exit
 .TP

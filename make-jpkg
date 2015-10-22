@@ -87,6 +87,8 @@ The following options are recognized:
   --with-system-certs  integrate with the system's keystore
   --without-alternatives
                        build a package that does not install alternatives
+  --package-suffix SUFFIX
+                       append a suffix to the package name and install directory
 
   --help               display this help and exit
   --version            output version information and exit
@@ -109,6 +111,8 @@ Try \`$program_name --help' for more information.
 EOF
     exit 1
 }
+
+package_suffix=""
 
 # options
 while [[ $# -gt 0 && "x$1" == x--* ]]; do
@@ -138,6 +142,10 @@ while [[ $# -gt 0 && "x$1" == x--* ]]; do
     create_cert_softlinks="true"
     elif [[ "x$1" == x--without-alternatives ]]; then
     without_alternatives="true"
+    elif [[ "x$1" == x--package-suffix ]]; then
+    [ $# -le 1 ] && missing_argument "$1"
+    shift
+    package_suffix="$1"
     else
     unrecognized_option "$1"
     fi

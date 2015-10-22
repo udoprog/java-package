@@ -48,8 +48,8 @@ j2sdk_run() {
     echo
     diskfree "$j2se_required_space"
     read_maintainer_info
-    j2se_package="$j2se_vendor-java$j2se_release-jdk"
-    j2se_name="jdk-$j2se_release-$j2se_vendor-$j2se_arch"
+    j2se_package="$j2se_vendor-java$j2se_release-jdk${package_suffix}"
+    j2se_name="jdk-$j2se_release-$j2se_vendor-${j2se_arch}${package_suffix}"
     local target="$package_dir/$j2se_name"
     install -d -m 755 "$( dirname "$target" )"
     extract_bin "$archive_path" "$j2se_expected_min_size" "$target"
